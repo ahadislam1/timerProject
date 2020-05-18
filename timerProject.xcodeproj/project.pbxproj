@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B7BB5CF2472E10B00232429 /* TimelaneCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7BB5CE2472E10B00232429 /* TimelaneCore */; };
+		0B7BB5D22472E12200232429 /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7BB5D12472E12200232429 /* TimelaneCombine */; };
 		0BF544032472D7570003A2E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF544022472D7570003A2E6 /* AppDelegate.swift */; };
 		0BF544052472D7570003A2E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF544042472D7570003A2E6 /* SceneDelegate.swift */; };
 		0BF544072472D7570003A2E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF544062472D7570003A2E6 /* ContentView.swift */; };
@@ -33,6 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7BB5CF2472E10B00232429 /* TimelaneCore in Frameworks */,
+				0B7BB5D22472E12200232429 /* TimelaneCombine in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +98,10 @@
 			dependencies = (
 			);
 			name = timerProject;
+			packageProductDependencies = (
+				0B7BB5CE2472E10B00232429 /* TimelaneCore */,
+				0B7BB5D12472E12200232429 /* TimelaneCombine */,
+			);
 			productName = timerProject;
 			productReference = 0BF543FF2472D7570003A2E6 /* timerProject.app */;
 			productType = "com.apple.product-type.application";
@@ -122,6 +130,10 @@
 				Base,
 			);
 			mainGroup = 0BF543F62472D7570003A2E6;
+			packageReferences = (
+				0B7BB5CD2472E10B00232429 /* XCRemoteSwiftPackageReference "TimelaneCore" */,
+				0B7BB5D02472E12200232429 /* XCRemoteSwiftPackageReference "TimelaneCombine" */,
+			);
 			productRefGroup = 0BF544002472D7570003A2E6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -346,6 +358,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B7BB5CD2472E10B00232429 /* XCRemoteSwiftPackageReference "TimelaneCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/TimelaneCore.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.8;
+			};
+		};
+		0B7BB5D02472E12200232429 /* XCRemoteSwiftPackageReference "TimelaneCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/TimelaneCombine.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B7BB5CE2472E10B00232429 /* TimelaneCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B7BB5CD2472E10B00232429 /* XCRemoteSwiftPackageReference "TimelaneCore" */;
+			productName = TimelaneCore;
+		};
+		0B7BB5D12472E12200232429 /* TimelaneCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B7BB5D02472E12200232429 /* XCRemoteSwiftPackageReference "TimelaneCombine" */;
+			productName = TimelaneCombine;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0BF543F72472D7570003A2E6 /* Project object */;
 }

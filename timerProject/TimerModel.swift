@@ -8,12 +8,16 @@
 
 import Foundation
 import Combine
+import TimelaneCombine
+import TimelaneCore
 
 class TimerModel: ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     
-    private let timer = Timer.publish(every: 1, tolerance: nil, on: .main, in: .common, options: nil)
+    private let timer = Timer
+        .publish(every: 1, tolerance: nil, on: .main, in: .common, options: nil)
+        .autoconnect()
     
     @Published var text = ""
     @Published var everyFiveSeconds = ""
@@ -22,8 +26,8 @@ class TimerModel: ObservableObject {
         subscriptions = []
         
         timer
-            .autoconnect()
             .print()
+            .lane("Timer")
             .sink { value in
                 self.text = value.description
         }
