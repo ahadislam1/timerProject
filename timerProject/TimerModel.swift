@@ -17,9 +17,17 @@ class TimerModel: ObservableObject {
     
     private var subscription: AnyCancellable?
     
+    private lazy var formatter: DateComponentsFormatter = {
+        let f = DateComponentsFormatter()
+        f.unitsStyle = .positional
+        f.allowedUnits = [.minute, .second]
+        f.zeroFormattingBehavior = .pad
+        return f
+    }()
+    
     @Published var text = ""
     @Published var everyFiveSeconds = ""
-    @Published var counter = 0
+    @Published var counter: TimeInterval = 0.0
     
     public func startTimer() {
         
@@ -29,8 +37,8 @@ class TimerModel: ObservableObject {
             .autoconnect()
             .lane("Timer")
             .sink(receiveValue: { value in
-                self.text = value.description
                 self.counter += 1
+                self.text = self.formatter.string(from: self.counter)!
             })
     }
     

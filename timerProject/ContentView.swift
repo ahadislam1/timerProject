@@ -16,6 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 24) {
+            Text(convertToDateTime())
             Text("\(timerModel.counter)")
             Text(timerModel.text.isEmpty ? "Text" : timerModel.text)
             HStack(spacing: 8) {
@@ -48,6 +49,15 @@ struct ContentView: View {
     private func stopTimer() {
         timerModel.stopTimer()
         isOff.toggle()
+    }
+    
+    private func convertToDateTime() -> String {
+        let formaterr = DateComponentsFormatter()
+        formaterr.unitsStyle = .positional
+        formaterr.allowedUnits = [.minute, .second]
+        formaterr.zeroFormattingBehavior = [.pad]
+        
+        return formaterr.string(from: 5.0)!
     }
 }
 
