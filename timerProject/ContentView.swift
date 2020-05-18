@@ -11,14 +11,18 @@ import Combine
 
 struct ContentView: View {
     
-    @ObservedObject var timerModel: TimerModel
-    var buttonPressed: () -> Void
+    @ObservedObject var timerModel = TimerModel()
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 24) {
             Text(timerModel.text.isEmpty ? "Text" : timerModel.text)
-            Button(action: buttonPressed) {
-                Text("HIT ME")
+            HStack(spacing: 8) {
+                Button(action: timerModel.startTimer) {
+                    Text("PLAY")
+                }
+                Button(action: timerModel.pauseTimer) {
+                    Text("PAUSE")
+                }
             }
         }
     }
@@ -30,6 +34,6 @@ struct ContentView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ContentView(timerModel: TimerModel(), buttonPressed: something)
+        ContentView()
     }
 }
