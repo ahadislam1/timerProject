@@ -12,19 +12,42 @@ import Combine
 struct ContentView: View {
     
     @ObservedObject var timerModel = TimerModel()
+    @State private var isOff = false
     
     var body: some View {
         VStack(spacing: 24) {
+            Text("\(timerModel.counter)")
             Text(timerModel.text.isEmpty ? "Text" : timerModel.text)
             HStack(spacing: 8) {
-                Button(action: timerModel.startTimer) {
+                Button(action: startTimer) {
                     Text("PLAY")
                 }
-                Button(action: timerModel.pauseTimer) {
+                .disabled(isOff)
+                Button(action: pauseTimer) {
                     Text("PAUSE")
                 }
+                .disabled(!isOff)
+                Button(action: stopTimer) {
+                    Text("STOP")
+                }
+                .disabled(!isOff)
             }
         }
+    }
+    
+    private func startTimer() {
+        timerModel.startTimer()
+        isOff.toggle()
+    }
+    
+    private func pauseTimer() {
+        timerModel.pauseTimer()
+        isOff.toggle()
+    }
+    
+    private func stopTimer() {
+        timerModel.stopTimer()
+        isOff.toggle()
     }
 }
 
